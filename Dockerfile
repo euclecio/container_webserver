@@ -9,6 +9,5 @@ RUN apt-get update \
     && mkdir -p /opt/birt \
     && mv birt-runtime* /opt/birt/runtime \
     && chmod +x /opt/birt/runtime/ReportEngine/genReport.sh
-RUN apt-get -y install php7.0-pgsql
 ENTRYPOINT [ "/usr/sbin/apache2" ]
 CMD ["-D", "FOREGROUND"]
