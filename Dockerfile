@@ -10,5 +10,6 @@ RUN apt-get update \
     && mv birt-runtime* /opt/birt/runtime \
     && chmod +x /opt/birt/runtime/ReportEngine/genReport.sh
 RUN apt-get -y install php7.0-pgsql
+RUN apt-get -y install php7.0-mcrypt
 ENTRYPOINT [ "/usr/sbin/apache2" ]
 CMD ["-D", "FOREGROUND"]
