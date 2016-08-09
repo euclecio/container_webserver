@@ -1,6 +1,6 @@
 FROM eminetto/apache-php7:latest
 RUN apt-get update --fix-missing \
-    && apt-get -y install default-jdk unzip \
+    && apt-get -y install default-jdk unzip sendmail \
     && apt-get -y install php7.0-pgsql php7.0-mcrypt php7.0-soap php7.0-zip \
     && phpdismod xdebug \
     && cd /tmp \
