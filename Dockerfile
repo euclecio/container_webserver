@@ -10,5 +10,8 @@ RUN apt-get update --fix-missing \
     && mkdir -p /opt/birt \
     && mv birt-runtime* /opt/birt/runtime \
     && chmod +x /opt/birt/runtime/ReportEngine/genReport.sh
+    
+RUN  locale-gen pt_BR.utf8 && locale-gen en_US.utf8
+
 ENTRYPOINT [ "/usr/sbin/apache2" ]
 CMD ["-D", "FOREGROUND"]
