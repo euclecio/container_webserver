@@ -8,7 +8,7 @@ RUN apt-get update \
     && apt-get install -y software-properties-common language-pack-en-base \
     && add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
-    && apt-get install -y
+    && apt-get -y install \
         apache2 \
         autoconf \
         curl \
