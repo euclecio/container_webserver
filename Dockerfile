@@ -1,11 +1,5 @@
 FROM ubuntu:latest
 
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR /var/log/apache2
-ENV APACHE_PID_FILE /var/run/apache2.pid
-ENV APACHE_RUN_DIR /var/run/apache2
-ENV APACHE_LOCK_DIR /var/lock/apache2
 ENV LANG en_US.UTF-8
 ENV LANG_ALL en_US.UTF-8
 
@@ -15,7 +9,6 @@ RUN apt-get update \
     && add-apt-repository -y ppa:ondrej/php \
     && apt-get update \
     && apt-get install -y
-        apache2 \
         apache2 \
         autoconf \
         curl \
@@ -63,6 +56,14 @@ RUN apt-get update \
     && phpdismod xdebug
 
 RUN locale-gen pt_BR.utf8 && locale-gen en_US.utf8
+
+ENV APACHE_RUN_USER www-data
+ENV APACHE_RUN_GROUP www-data
+ENV APACHE_LOG_DIR /var/log/apache2
+ENV APACHE_PID_FILE /var/run/apache2.pid
+ENV APACHE_RUN_DIR /var/run/apache2
+ENV APACHE_LOCK_DIR /var/lock/apache2
+
 
 RUN mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR
 
