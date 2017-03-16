@@ -1,5 +1,6 @@
 FROM debian:latest
 
+ENV LC_ALL=C
 ENV LANG en_US.UTF-8
 ENV LANG_ALL en_US.UTF-8
 ENV APACHE_RUN_USER www-data
@@ -53,8 +54,9 @@ RUN apt-get -y install php7.1 \
     sendmail \
     unzip \
     locales
-
-RUN locale-gen pt_BR.utf8 && locale-gen en_US.utf8 \
+RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
+    && echo "pt_BR.UTF-8 UTF-8" >> /etc/locale.gen \
+    && locale-gen \
     && a2enmod headers \
     && a2enmod rewrite \
     && phpdismod xdebug \
