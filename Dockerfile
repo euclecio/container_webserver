@@ -62,7 +62,8 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && phpdismod xdebug \
     mkdir -p $APACHE_RUN_DIR $APACHE_LOCK_DIR $APACHE_LOG_DIR \
     ln -sf /dev/stdout /var/log/apache2/access.log && \
-    ln -sf /dev/stderr /var/log/apache2/error.log
+    ln -sf /dev/stderr /var/log/apache2/error.lo
+RUN apt-get -y install supervisor sudo cron && touch /var/log/cron.log
 
 VOLUME [ "/var/www/html" ]
 WORKDIR /var/www/html
